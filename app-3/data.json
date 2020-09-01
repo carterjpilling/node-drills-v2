@@ -4,21 +4,21 @@
     "make": "GMC",
     "model": "Safari",
     "year": 1999,
-    "color": "Red"
+    "color": "Brown"
   },
   {
     "id": 2,
     "make": "Saab",
     "model": "9-5",
     "year": 2011,
-    "color": "Blue"
+    "color": "Red"
   },
   {
     "id": 3,
     "make": "GMC",
     "model": "Yukon",
     "year": 2001,
-    "color": "Blue"
+    "color": "Green"
   },
   {
     "id": 4,
@@ -39,21 +39,21 @@
     "make": "Buick",
     "model": "Coachbuilder",
     "year": 1993,
-    "color": "Gray"
+    "color": "Blue"
   },
   {
     "id": 7,
     "make": "Volvo",
     "model": "S60",
     "year": 2003,
-    "color": "Red"
+    "color": "Pink"
   },
   {
     "id": 8,
     "make": "Buick",
     "model": "LeSabre",
     "year": 1991,
-    "color": "Green"
+    "color": "Blue"
   },
   {
     "id": 9,
@@ -67,6 +67,6 @@
     "make": "Toyota",
     "model": "Truck Xtracab SR5",
     "year": 1989,
-    "color": "White"
+    "color": "Purple"
   }
 ]
