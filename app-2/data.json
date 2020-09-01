@@ -1,0 +1,72 @@
+[
+  {
+    "id": 1,
+    "make": "GMC",
+    "model": "Safari",
+    "year": 1999,
+    "color": "Brown"
+  },
+  {
+    "id": 2,
+    "make": "Saab",
+    "model": "9-5",
+    "year": 2011,
+    "color": "Red"
+  },
+  {
+    "id": 3,
+    "make": "GMC",
+    "model": "Yukon",
+    "year": 2001,
+    "color": "Green"
+  },
+  {
+    "id": 4,
+    "make": "Mercedes-Benz",
+    "model": "M-Class",
+    "year": 2003,
+    "color": "Blue"
+  },
+  {
+    "id": 5,
+    "make": "Lamborghini",
+    "model": "Gallardo",
+    "year": 2004,
+    "color": "Red"
+  },
+  {
+    "id": 6,
+    "make": "Buick",
+    "model": "Coachbuilder",
+    "year": 1993,
+    "color": "Blue"
+  },
+  {
+    "id": 7,
+    "make": "Volvo",
+    "model": "S60",
+    "year": 2003,
+    "color": "Pink"
+  },
+  {
+    "id": 8,
+    "make": "Buick",
+    "model": "LeSabre",
+    "year": 1991,
+    "color": "Blue"
+  },
+  {
+    "id": 9,
+    "make": "Dodge",
+    "model": "Durango",
+    "year": 1998,
+    "color": "Green"
+  },
+  {
+    "id": 10,
+    "make": "Toyota",
+    "model": "Truck Xtracab SR5",
+    "year": 1989,
+    "color": "Purple"
+  }
+]
