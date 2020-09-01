@@ -110,6 +110,8 @@ const app = express()
 
 const SERVER_PORT = 4000
 
+app.use(express.json())
+
 app.get('/api/cars', carCtrl.getAllCars)
 app.get('/api/cars/:id', carCtrl.getCarById)
 app.post('/api/cars', carCtrl.addCar)
@@ -174,12 +176,12 @@ module.exports = {
 
     const index = cars.findIndex((car) => car.id === +id)
 
-    if (!index) {
+    if (index === -1) {
       return res.status(404).send('Car not found')
     }
 
     const modifiedCar = {
-      id,
+      id: +id,
       make,
       model,
       year,
@@ -195,7 +197,7 @@ module.exports = {
 
     const index = cars.findIndex((car) => car.id === +id)
 
-    if (!index) {
+    if (index === -1) {
       return res.status(404).send('Car not found')
     }
 

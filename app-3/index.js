@@ -4,6 +4,8 @@ const app = express()
 
 const SERVER_PORT = 4000
 
+app.use(express.json())
+
 app.get('/api/cars', carCtrl.getAllCars)
 app.get('/api/cars/:id', carCtrl.getCarById)
 app.post('/api/cars', carCtrl.addCar)

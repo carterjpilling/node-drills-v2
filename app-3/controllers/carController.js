@@ -46,12 +46,12 @@ module.exports = {
 
     const index = cars.findIndex((car) => car.id === +id)
 
-    if (!index) {
+    if (index === -1) {
       return res.status(404).send('Car not found')
     }
 
     const modifiedCar = {
-      id,
+      id: +id,
       make,
       model,
       year,
@@ -67,7 +67,7 @@ module.exports = {
 
     const index = cars.findIndex((car) => car.id === +id)
 
-    if (!index) {
+    if (index === -1) {
       return res.status(404).send('Car not found')
     }
 
