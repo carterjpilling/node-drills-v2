@@ -1,0 +1,282 @@
+{
+  "info": {
+    "_postman_id": "81ece9c3-f588-4d87-b3e2-1975aed00790",
+    "name": "Node Drills App 3",
+    "description": "Tests for App 3 of the DevMountain Node Drills.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Get all cars",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "0cbc0670-c5d3-4794-8f44-989dc6798763",
+            "exec": [
+              "pm.test('Status test', () => {\r",
+              "    pm.response.to.have.status(200)\r",
+              "})\r",
+              "\r",
+              "pm.test('Contain all items', () => {\r",
+              "    pm.response.to.not.be.error\r",
+              "    pm.expect(Object.keys(pm.response.json()).length).to.eql(10);\r",
+              "})"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:4000/api/cars",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "4000",
+          "path": ["api", "cars"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get car by id",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "9b9627a6-8b42-4fa7-8d0c-e4575a2dc33c",
+            "exec": [
+              "pm.test('Status code', () => {\r",
+              "    pm.response.to.have.status(200)\r",
+              "})\r",
+              "\r",
+              "pm.test('Returns correct item', () => {\r",
+              "    pm.expect(pm.response.json().id).to.eql(1)\r",
+              "})"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:4000/api/cars/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "4000",
+          "path": ["api", "cars", "1"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Cannot get car that does not exist",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "94f56f18-6797-41f4-89d7-6da10db8c63f",
+            "exec": [
+              "pm.test('Status code', () => {\r",
+              "    pm.response.to.have.status(404)\r",
+              "})\r",
+              ""
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:4000/api/cars/badboy",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "4000",
+          "path": ["api", "cars", "badboy"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get all blue cars",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "fabc16f4-3894-4cbf-b989-704ff37635c6",
+            "exec": [
+              "pm.test('Status test', () => {\r",
+              "    pm.response.to.have.status(200)\r",
+              "})\r",
+              "\r",
+              "pm.test('Only gets Blue cars', () => {\r",
+              "    pm.expect(pm.response.json().every(e => e.color === 'Blue'))\r",
+              "})"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:4000/api/cars?color=Blue",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "4000",
+          "path": ["api", "cars"],
+          "query": [
+            {
+              "key": "color",
+              "value": "Blue"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Add new car",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "e3827887-99c1-4db7-aa91-d67914aa31ec",
+            "exec": [
+              "pm.test('Status test', () => {\r",
+              "    pm.response.to.have.status(200)\r",
+              "})\r",
+              "\r",
+              "pm.test('Adds car to array', () => {\r",
+              "    pm.expect(pm.response.json().some(e => e.make === 'Mazda' && e.model === 'Miata' && e.year === 2001)).to.eql(true)\r",
+              "})"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"make\": \"Mazda\",\r\n    \"model\": \"Miata\",\r\n    \"color\": \"Green\",\r\n    \"year\": 2001\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:4000/api/cars",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "4000",
+          "path": ["api", "cars"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Edit existing car",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "92d229d8-dbbc-448d-b15a-a51037e61395",
+            "exec": [
+              "pm.test(\"Status test\", () => {\r",
+              "    pm.response.to.have.status(200)\r",
+              "})\r",
+              "\r",
+              "pm.test(\"Edits correct car\", () => {\r",
+              "    pm.expect(pm.response.json()[0]).to.eql({make: 'Tesla', model: 'S', id: 1, color: 'Black', year: 2020})\r",
+              "})"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"make\": \"Tesla\",\r\n    \"model\": \"S\",\r\n    \"year\": 2020,\r\n    \"color\": \"Black\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:4000/api/cars/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "4000",
+          "path": ["api", "cars", "1"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Delete car",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "a93d08e0-4351-4fc4-b268-cf5715f6f761",
+            "exec": [
+              "pm.test('Status test', () => {\r",
+              "    pm.response.to.have.status(200)\r",
+              "})\r",
+              "\r",
+              "pm.test('Deletes correct car', () => {\r",
+              "    pm.expect(pm.response.json().some(e => e.id === 1)).to.eql(false)\r",
+              "})"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:4000/api/cars/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "4000",
+          "path": ["api", "cars", "1"]
+        }
+      },
+      "response": []
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "id": "bcf972db-1aeb-4be1-b15e-7a4b6ba6cae8",
+        "type": "text/javascript",
+        "exec": [""]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "id": "d99e8243-c554-4012-925d-73f1fbdba873",
+        "type": "text/javascript",
+        "exec": [""]
+      }
+    }
+  ],
+  "protocolProfileBehavior": {}
+}
